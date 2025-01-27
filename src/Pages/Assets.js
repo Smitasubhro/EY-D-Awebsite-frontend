@@ -381,7 +381,7 @@ const Assets = () => {
                 <p className="asset-tile-title">{item.title}</p>
                 <p className="asset-tile-content">{item.data}
                 </p>
-                <Link style={{textDecoration:"none"}} to={`/assets/${item.id}/${item.title}`} target="_blank">
+                <Link style={{textDecoration:"none"}} to={`/assets/${item.id}/${item.title}`} >
                   <div style={{display:"flex"}}>
                     <p className="asset-tile-footer">Read More</p>
                     <FaArrowRight style={{color:"#FFE600",marginTop:"5px",cursor:"pointer"}}/>
