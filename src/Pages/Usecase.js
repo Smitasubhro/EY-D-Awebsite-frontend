@@ -380,7 +380,7 @@ const Usecase = () => {
               <p className="usecase-tile-title">{item.title}</p>
               <p className="usecase-tile-content">{item.data}
               </p>
-              <Link style={{textDecoration:"none"}} to={`/usecases/${item.id}/${item.title}`} target="_blank">
+              <Link style={{textDecoration:"none"}} to={`/usecases/${item.id}/${item.title}`}>
                 <div style={{display:"flex"}}>
                   <p className="usecase-tile-footer">Read More</p>
                   <FaArrowRight style={{color:"#FFE600",marginTop:"5px",cursor:"pointer"}}/>
