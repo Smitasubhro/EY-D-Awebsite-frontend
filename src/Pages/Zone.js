@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import Zonebanner2 from "../Asset/Zonebanner2.svg"
+import Zonebanner2 from "../Asset/Zonebanner2.jpg"
 import Zonebanner1 from "../Asset/Zonebanner1.svg"
 import arrow from "../Asset/arrow.svg"
 import "../Zone.css";
