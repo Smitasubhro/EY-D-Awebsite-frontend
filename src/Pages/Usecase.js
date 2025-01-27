@@ -46,7 +46,7 @@ const Usecase = () => {
     const getDataOnLoad = async() => {
       setIsLoading(true)
       const response = await fetch(
-        'http://localhost:8090/api/getUseCaseList',
+        'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getUseCaseList',
         {
           method: "GET",
           
