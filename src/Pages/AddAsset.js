@@ -34,7 +34,7 @@ const onSubmitHandler = async(e) => {
           const data = new FormData();
           data.append("imageLink", fileData);
           const response = await fetch(
-            'http://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/uploadImage',
+            'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/uploadImage',
             {
               method: "POST",
               body: data,
@@ -65,7 +65,7 @@ const onSubmitHandler = async(e) => {
             "Business":formData.business,
           }
           const addresponse = await fetch(
-            'http://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/addAsset',
+            'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/addAsset',
             {
               method: "POST",
               headers: {
