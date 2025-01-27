@@ -376,11 +376,11 @@ const Usecase = () => {
           {isLoading ? <Loader/> : 
           usecaseData?.map((item) => (
             <div key={item.id} className='usecase-list-box'>
-              <img src={`http://localhost:8090/upload/${item.link}`} style={{width:"100%",objectFit:"cover"}}/>
+              <img src={`https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/upload/${item.link}`} style={{width:"100%",objectFit:"cover"}}/>
               <p className="usecase-tile-title">{item.title}</p>
               <p className="usecase-tile-content">{item.data}
               </p>
-              <Link style={{textDecoration:"none"}} to={`/usecases/${item.id}/${item.title}`} >
+              <Link style={{textDecoration:"none"}} to={`/usecases/${item.id}/${item.title}`} target="_blank">
                 <div style={{display:"flex"}}>
                   <p className="usecase-tile-footer">Read More</p>
                   <FaArrowRight style={{color:"#FFE600",marginTop:"5px",cursor:"pointer"}}/>

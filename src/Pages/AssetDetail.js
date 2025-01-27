@@ -115,7 +115,7 @@ const AssetDetail = () => {
               </table>
             </div>
             <div className='assetdetail-list-container'>
-              <img src={`http://localhost:8090/upload/${assetDetailData.Image_Link}`} height="300" style={{width:"98%",objectFit:"cover",margin:"2px 5px 0 6px"}}/>
+              <img src={`https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/upload/${assetDetailData.Image_Link}`} height="300" style={{width:"98%",objectFit:"cover",margin:"2px 5px 0 6px"}}/>
               <p style={{fontFamily: "EYInterstate",fontSize:"24px",fontWeight:"700",lineHeight:"28.8px",
               margin:"2px 0 0 40px"}}>Problem Statement</p>
               <p style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"300",lineHeight:"24px",
