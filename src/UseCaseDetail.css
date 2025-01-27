@@ -1,0 +1,76 @@
+.usecasedetail-wrapper{
+    grid-area: main;
+    /* overflow-x: hidden; */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    
+}
+.usecasedetail-wrapper-1{
+    width:100vw;
+    height:40%;
+    position: relative;
+}
+.breadcrumb{
+    width:384px;
+    height:30px;
+    position: absolute;
+    top:8%;
+    left:5%;
+    background-color: transparent;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.usecasedetail-wrapper-2{
+    width:100vw;
+    height: 80%;
+   background-color: whitesmoke;
+    position: relative;
+}
+.addusecasedetails-btn button{
+    position:absolute;
+    top:-3%;
+    left:3%;
+    width:387px;
+    height: 30px;
+    border-radius:6px;
+    border-width: 0;
+    background-color: #FFE600;
+    color: #2E2E38;
+    cursor: pointer;
+    font-family: EYInterstate;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 24px;
+}
+.addusecasedetails-short-form {
+    position:absolute;
+    top:10%;
+    left:3%;
+    /* display:flex;
+    justify-content: space-between;
+    align-items: center; */
+    background-color: #FFFFFF;
+    width:387px;
+    height:300px;
+    border-radius:6px;
+
+}
+.usecasedetail-list-container{
+        position:absolute;
+        top:-3%;
+        left:35%;
+
+        display:flex;
+        
+        flex-direction: column;
+        justify-content: flex-start;
+        /* align-items: center; */
+        gap: 20px;
+        background-color: white;
+        width:800px;
+        /* height:800px; */
+        border-radius:6px;
+}
