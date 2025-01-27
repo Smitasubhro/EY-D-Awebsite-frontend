@@ -33,6 +33,7 @@ const Home = () => {
   const [allImages, setAllImages] = useState([banner1,banner2,banner3,banner4])
   const [loaded, setIsLoaded] = useState(false);
   useEffect(() => {
+    
     const len=allImages.length-1
     if (selectedImage < 0) {
       setSelectedImage(len);
