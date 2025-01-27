@@ -33,7 +33,7 @@ const AddUseCase = () => {
           const data = new FormData();
           data.append("imageLink", fileData);
           const response = await fetch(
-            'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/uploadImage',
+            'http://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/uploadImage',
             {
               method: "POST",
               body: data,
@@ -64,7 +64,7 @@ const AddUseCase = () => {
             "Business":formData.business,
           }
           const addresponse = await fetch(
-            'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/addUseCase',
+            'http://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/addUseCase',
             {
               method: "POST",
               headers: {

@@ -15,7 +15,7 @@ const UseCaseDetail = () => {
     const getDataOnLoad = async() => {
         setIsLoading(true)
         const response = await fetch(
-          'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getUseCaseList',
+          'http://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getUseCaseList',
           {
             method: "GET",
             
