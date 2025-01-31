@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import eyIcon from "../Asset/EY logo 1.svg"
 import "./Navbar.css";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 
 export const Navbar = () => {
  

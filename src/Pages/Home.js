@@ -1,22 +1,16 @@
 import React,{useState,useEffect} from 'react';
 import Dots from "../Components/Dots";
-import bgimage1 from "../Asset/bgimage1.jpg"
-import bgimage2 from "../Asset/bgimage2.jpg"
-import bgimage3 from "../Asset/bgimage3.jpg"
-import banner1 from "../Asset/banner1.svg"
-// import banner1comp from "../Asset/banner1comp.js"
-import banner2 from "../Asset/banner2.svg"
-import banner3 from "../Asset/banner3.svg"
-import banner4 from "../Asset/banner4.svg"
+import banner1 from "../Asset/banner1.jpg"
+import banner2 from "../Asset/banner2.jpg"
+import banner3 from "../Asset/banner3.jpg"
+import banner4 from "../Asset/banner4.jpg"
 import Frame1 from "../Asset/Frame1.jpg"
-
 import Frametitle from "../Asset/Frametitle.svg"
 import clienttitle from "../Asset/clienttitle.svg"
-import GettyImages1 from "../Asset/GettyImages-1.svg"
-import GettyImages2 from "../Asset/GettyImages-2.svg"
-import GettyImages3 from "../Asset/GettyImages-3.svg"
-import GettyImages4 from "../Asset/GettyImages-4.svg"
-import clients from "../Asset/clients.svg"
+import GettyImages1 from "../Asset/GettyImages-1.jpg"
+import GettyImages2 from "../Asset/GettyImages-2.jpg"
+import GettyImages3 from "../Asset/GettyImages-3.jpg"
+import GettyImages4 from "../Asset/GettyImages-4.jpg"
 import airbnbLogo from "../Asset/airbnb Logo.svg"
 import AmazonLogo from "../Asset/Amazon Logo.svg"
 import bookmyshowLogo from "../Asset/bookmyshow Logo.svg"
@@ -30,8 +24,8 @@ const config = {
 };
 const Home = () => {
   const [selectedImage, setSelectedImage] = useState(0)
-  const [allImages, setAllImages] = useState([banner1,banner2,banner3,banner4])
-  const [loaded, setIsLoaded] = useState(false);
+  const allImages = [banner1,banner2,banner3,banner4]
+  
   useEffect(() => {
     
     const len=allImages.length-1

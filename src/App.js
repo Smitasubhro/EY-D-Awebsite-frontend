@@ -1,6 +1,6 @@
 
 import React,{lazy,Suspense} from "react";
-import logo from './logo.svg';
+
 import './App.css';
 import { Routes, Route } from "react-router-dom"
 import {Navbar} from './Components/Navbar';
@@ -17,7 +17,9 @@ const AddAsset=lazy(()=>import('./Pages/AddAsset'));
 
 function App() {
   return (
+    
     <div className="grid-container">
+      
       <Navbar/>
      
       <Routes>

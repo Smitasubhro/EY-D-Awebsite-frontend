@@ -1,5 +1,5 @@
 import React,{useState,useRef} from 'react'
-import Addusecasebanner from "../Asset/Addusecasebanner.svg"
+import Addusecasebanner from "../Asset/Addusecasebanner.jpg"
 import { CiHome } from "react-icons/ci";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaSpinner } from "react-icons/fa";

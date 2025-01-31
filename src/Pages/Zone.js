@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Zonebanner2 from "../Asset/Zonebanner2.jpg"
-import Zonebanner1 from "../Asset/Zonebanner1.svg"
+import Zonebanner1 from "../Asset/Zonebanner1.jpg"
 import arrow from "../Asset/arrow.svg"
 import "../Zone.css";
 const config = {
@@ -12,7 +12,7 @@ const Zone = () => {
   const [isManu,setIsManu]= useState(false)
   const [isRetail,setIsRetail]= useState(false)
   const [isEnergy,setIsEnergy]= useState(false)
-  const [loaded, setIsLoaded] = useState(false);
+  
   useEffect(() => {
       let observer = new window.IntersectionObserver(function (entries, self) {
         console.log("entries", entries);
