@@ -1,17 +1,12 @@
 import React,{useState,useRef,useEffect} from 'react'
 import {Link} from "react-router-dom";
 import usecasebanner from "../Asset/usecasebanner.svg"
-import usecaseimg1 from "../Asset/usecaseimg1.svg"
-import usecaseimg2 from "../Asset/usecaseimg2.svg"
-import usecaseimg3 from "../Asset/usecaseimg3.svg"
-import usecaseimg4 from "../Asset/usecaseimg4.svg"
-import usecaseimg5 from "../Asset/usecaseimg5.svg"
-import usecaseimg6 from "../Asset/usecaseimg6.svg"
 import { FaSearch } from "react-icons/fa";
 import { BiAbacus } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
 import {FaAngleRight ,FaAngleLeft } from "react-icons/fa6";
-import Loader from "../Components/Loader.js"
+import Loader from "../Components/Loader.js";
+import Swal from 'sweetalert2';
 import "../Usecase.css"
 const Usecase = () => {
     const inputElement = useRef();
@@ -45,23 +40,44 @@ const Usecase = () => {
     // ];
     const getDataOnLoad = async() => {
       setIsLoading(true)
-      const response = await fetch(
-        'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getUseCaseList',
-        {
-          method: "GET",
-          
+      try{
+        const response = await fetch(
+          'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getUseCaseList',
+          {
+            method: "GET",
+            
+          }
+        );
+        const result = await response.json()
+        console.log("Data on Load ",result.data[0])
+        let temparr=[]
+        result.data[0].map((item)=>{
+          temparr=[...temparr,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
+        })
+        console.log("53",temparr)
+        setUsecaseData(temparr)
+        setUsecaseFilteredData(result.data[0])
+        setIsLoading(false)
+      }catch(err)
+      {
+        setIsLoading(false)
+        const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
         }
-      );
-      const result = await response.json()
-      console.log("Data on Load ",result.data[0])
-      let temparr=[]
-      result.data[0].map((item)=>{
-        temparr=[...temparr,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Erro,Try Again"
       })
-      console.log("53",temparr)
-      setUsecaseData(temparr)
-      setUsecaseFilteredData(result.data[0])
-      setIsLoading(false)
+      }
+
     }
     const getDataOnTabClick =(val)=>{
       if(val==='All')

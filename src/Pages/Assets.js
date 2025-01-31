@@ -11,7 +11,8 @@ import { FaSearch } from "react-icons/fa";
 import { BiAbacus } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
 import {FaAngleRight ,FaAngleLeft } from "react-icons/fa6";
-import Loader from "../Components/Loader.js"
+import Loader from "../Components/Loader.js";
+import Swal from 'sweetalert2';
 import "../Assets.css"
 
 const Assets = () => {
@@ -46,23 +47,44 @@ const Assets = () => {
   //     ];
   const getDataOnLoad = async() => {
     setIsLoading(true)
-    const response = await fetch(
-      'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getAssetList',
-      {
-        method: "GET",
-        
-      }
-    );
-    const result = await response.json()
-    console.log("Data on Load ",result.data[0])
-    let temparr=[]
-    result.data[0].map((item)=>{
-      temparr=[...temparr,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
-    })
-    console.log("53",temparr)
-    setAssetData(temparr)
-    setAssetFilteredData(result.data[0])
-    setIsLoading(false)
+    try{
+      const response = await fetch(
+        'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getAssetList',
+        {
+          method: "GET",
+          
+        }
+      );
+      const result = await response.json()
+      console.log("Data on Load ",result.data[0])
+      let temparr=[]
+      result.data[0].map((item)=>{
+        temparr=[...temparr,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
+      })
+      console.log("53",temparr)
+      setAssetData(temparr)
+      setAssetFilteredData(result.data[0])
+      setIsLoading(false)
+    }catch(err)
+    {
+      setIsLoading(false)
+        const Toast = Swal.mixin({
+        toast: true,
+        position: "center",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Erro,Try Again"
+      })
+    }
+    
   }
   const getDataOnTabClick =(val)=>{
     if(val==='All')
