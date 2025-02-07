@@ -15,6 +15,7 @@ const AddUseCase = () => {
     const [isBtnLoading,setIsBtnLoading]= useState(false)
     const [fileName,setFileName]= useState("")
     const [fileData, setFileData] = useState("");
+    const [subPillarList, setSubPillarList] = useState([]);
     const [formData, setFormData] = useState({clientName:"",techName:"",region:"",industry:"",
         function:"",complexity:"",developedby:"",pillar:"",subpillar:"",problem:"",solution:"",
         business:"",effort:"",year:"",startdate:"",enddate:"",title:"",usecaseid:uniqueid
@@ -120,6 +121,31 @@ const AddUseCase = () => {
         
       };
       const handleFormdataChange=(e)=>{
+        if(e.target.name==="pillar")
+        {
+            if(e.target.value==="Data Engineering")
+            {
+                setSubPillarList(['Azure','AWS','GCP','Snowflake','DBT','Fivetran',
+                    'Palantir Foundry','Databricks','Big Data & Hadoop','MS Fabric'])
+                    setFormData({...formData,"subpillar":""})
+            }
+            if(e.target.value==="Data Foundation")
+            {
+                setSubPillarList(['Data Strategy','MDM','Data Modelling','DQ','ETL / DI','Data Governance',
+                    'Data Testing'])
+                    setFormData({...formData,"subpillar":""})
+            }
+            if(e.target.value==="Business Intelligence")
+            {
+                setSubPillarList(['Data Analysis','Data Visualization','Power Platform','AI4BI'])
+                setFormData({...formData,"subpillar":""})
+            }
+            if(e.target.value==="Artificial Intelligence")
+            {
+                setSubPillarList(['AI/ ML Engineering','Gen-AI','Python Full Stack'])
+                setFormData({...formData,"subpillar":""})
+            }
+        }
         setFormData({...formData,[e.target.name]:e.target.value})
       }
   return (
@@ -253,10 +279,14 @@ const AddUseCase = () => {
                         <label for='subpillar'>Sub-Pillars *</label>
                         <select id='subpillar' name='subpillar' required onChange={(e)=>handleFormdataChange(e)}>
                             <option value="" hidden>Please Select an item</option>
-                            <option value="Data Foundation" >Data Foundation</option>
+                            {subPillarList.map((item,index)=>{
+                                return <option key={index} value={item}>{item}</option>
+                            })
+                            }
+                            {/* <option value="Data Foundation" >Data Foundation</option>
                             <option value="Data Engineering">Data Engineering</option>
                             <option value="Business Intelligence">Business Intelligence</option>
-                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option value="Artificial Intelligence">Artificial Intelligence</option> */}
                         </select>
                     </div>
                     <div className="form-field-select">
