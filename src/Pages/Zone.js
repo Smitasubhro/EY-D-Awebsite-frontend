@@ -1,11 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react'
 import {Link} from "react-router-dom";
-import Zonebanner2 from "../Asset/Zonebanner2.jpg"
-import Zonebanner1 from "../Asset/Zonebanner1.jpg"
 import zonebanner1bgimage from "../Asset/zonebanner1bgimage.jpg"
-import zone1image from "../Asset/zone1image.jpg"
-import GettyImages4 from "../Asset/GettyImages-4.jpg"
-import arrow from "../Asset/arrow.svg";
 import {  FaAngleRight, FaAngleLeft ,FaArrowRight} from "react-icons/fa6";
 // import { FaArrowRight } from "react-icons/fa";
 import "../Zone.css";
@@ -249,7 +244,7 @@ const Zone = () => {
             setIsLoading(false)
           }catch(err)
           {
-          //   setIsLoading(false)
+            setIsLoading(false)
           //   const Toast = Swal.mixin({
           //   toast: true,
           //   position: "center",
@@ -287,6 +282,7 @@ const Zone = () => {
         }
   return (
     <div className='zone-wrapper'>
+      {isLoading && <Loader/> }
       <div className='zone-wrapper-1'
         style={{
           backgroundImage: `url(${zonebanner1bgimage})`,
