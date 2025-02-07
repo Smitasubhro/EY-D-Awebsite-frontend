@@ -127,26 +127,34 @@ const AddUseCase = () => {
             {
                 setSubPillarList(['Azure','AWS','GCP','Snowflake','DBT','Fivetran',
                     'Palantir Foundry','Databricks','Big Data & Hadoop','MS Fabric'])
-                    setFormData({...formData,"subpillar":""})
+                   // setFormData({...formData,"subpillar":""})
+                   setFormData({...formData,subpillar:"",[e.target.name]:e.target.value})
             }
             if(e.target.value==="Data Foundation")
             {
                 setSubPillarList(['Data Strategy','MDM','Data Modelling','DQ','ETL / DI','Data Governance',
                     'Data Testing'])
-                    setFormData({...formData,"subpillar":""})
+                   // setFormData({...formData,"subpillar":""})
+                   setFormData({...formData,subpillar:"",[e.target.name]:e.target.value})
             }
             if(e.target.value==="Business Intelligence")
             {
                 setSubPillarList(['Data Analysis','Data Visualization','Power Platform','AI4BI'])
-                setFormData({...formData,"subpillar":""})
+                //setFormData({...formData,"subpillar":""})
+                setFormData({...formData,subpillar:"",[e.target.name]:e.target.value})
             }
             if(e.target.value==="Artificial Intelligence")
             {
                 setSubPillarList(['AI/ ML Engineering','Gen-AI','Python Full Stack'])
-                setFormData({...formData,"subpillar":""})
+                //setFormData({...formData,"subpillar":""})
+                setFormData({...formData,subpillar:"",[e.target.name]:e.target.value})
             }
+            
         }
-        setFormData({...formData,[e.target.name]:e.target.value})
+        else{
+            setFormData({...formData,[e.target.name]:e.target.value})
+        }
+        
       }
   return (
     <div className='addusecase-wrapper'>

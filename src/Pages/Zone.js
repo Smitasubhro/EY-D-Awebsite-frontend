@@ -281,8 +281,10 @@ const Zone = () => {
           console.log("177",width,inputElement.current.scrollLeft)
         }
   return (
+    
     <div className='zone-wrapper'>
-      {isLoading && <Loader/> }
+     {isLoading?<Loader/>:
+      <>
       <div className='zone-wrapper-1'
         style={{
           backgroundImage: `url(${zonebanner1bgimage})`,
@@ -436,7 +438,10 @@ const Zone = () => {
         
         
       </div>
+      </>
+      }
     </div>
+
   )
 }
 

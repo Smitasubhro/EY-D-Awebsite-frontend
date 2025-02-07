@@ -26,7 +26,7 @@ export const Navbar = () => {
           <NavLink to="/assets">Assets</NavLink>
           </li>
           <div className='contact-div'>
-              Cantact Us
+              Contact Us
           </div>
         </ul>
         
