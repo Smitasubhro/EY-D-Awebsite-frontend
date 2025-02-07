@@ -185,8 +185,14 @@ const AddUseCase = () => {
                         <label for='industry'>Industry *</label>
                         <select id='industry' name='industry' required onChange={(e)=>handleFormdataChange(e)}>
                             <option value="" hidden>Please Select an item</option>
-                            <option value="telecom" >Telecom</option>
-                            <option value="transport">Transport</option>
+                            <option value="AM" >Manufacturing</option>
+                            <option value="CM">Consumer</option>
+                            <option value="ER">Energy</option>
+                            <option value="FS">Finance</option>
+                            <option value="GI">Infrastructure</option>
+                            <option value="HC">Healthcare</option>
+                            <option value="PE">Private</option>
+                            <option value="TM">Technology</option>
                         </select>
                     </div>
                     <div className="form-field-select">

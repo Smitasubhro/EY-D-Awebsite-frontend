@@ -93,7 +93,47 @@ const UseCaseDetail = () => {
                             <tr>
                                 <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"400",lineHeight:"16.8px",padding:"5px 20px"}}>Industry</td>
                                 <td>:</td>
-                                <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>{usecaseDetailData.Industry}</td>
+                                
+                            {(usecaseDetailData.Industry==="AM") &&
+                                <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                               Manufacturing
+                                </td>  
+                            }
+                            {(usecaseDetailData.Industry==="CM") &&
+                                <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                               Consumer
+                                </td>  
+                            }
+                            {(usecaseDetailData.Industry==="ER") &&
+                            <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                            Energy
+                            </td>  
+                            }
+                            {(usecaseDetailData.Industry==="FS") &&
+                            <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                            Finance
+                            </td>  
+                            }
+                            {(usecaseDetailData.Industry==="GI") &&
+                            <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                            Infrastructure
+                            </td>  
+                            } 
+                            {(usecaseDetailData.Industry==="HC") &&
+                            <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                            Healthcare
+                            </td>  
+                            } 
+                            {(usecaseDetailData.Industry==="PE") &&
+                            <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                            Private
+                            </td>  
+                            } 
+                            {(usecaseDetailData.Industry==="TM") &&
+                            <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"600",lineHeight:"16.8px",padding:"5px 20px"}}>
+                            Technology
+                            </td>  
+                            } 
                             </tr>
                             <tr>
                                 <td style={{fontFamily: "EYInterstate",fontSize:"14px",fontWeight:"400",lineHeight:"16.8px",padding:"5px 20px"}}>Function</td>

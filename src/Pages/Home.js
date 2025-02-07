@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import Dots from "../Components/Dots";
 import banner1 from "../Asset/banner1.jpg"
 import banner2 from "../Asset/banner2.jpg"
@@ -17,15 +17,21 @@ import bookmyshowLogo from "../Asset/bookmyshow Logo.svg"
 import fedexLogo from "../Asset/fedex Logo.svg"
 import MicrosoftLogo from "../Asset/Microsoft Logo.svg"
 import WalmartLogo from "../Asset/Walmart Logo.svg"
+import {  FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import "../Home.css"
+import HomeLoader from "../Components/HomeLoader.js";
+import Swal from 'sweetalert2';
 const config = {
   rootMargin: "0px 0px 0px 0px",
   threshold: 0.2,
 };
 const Home = () => {
+  const [isLoading,setIsLoading]= useState(false)
+  const [usecaseData,setUsecaseData]= useState([])
+  const [usecaseFilteredData,setUsecaseFilteredData]= useState([])
   const [selectedImage, setSelectedImage] = useState(0)
   const allImages = [banner1,banner2,banner3,banner4]
-  
+  const inputElement = useRef();
   useEffect(() => {
     
     const len=allImages.length-1
@@ -71,10 +77,68 @@ const Home = () => {
       });
     };
   }, []);
+  const getDataOnLoad = async() => {
+        setIsLoading(true)
+        try{
+          const response = await fetch(
+            'https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/api/getUseCaseList',
+            {
+              method: "GET",
+              
+            }
+          );
+          const result = await response.json()
+          console.log("Data on Load ",result.data[0])
+          let temparr=[]
+          result.data[0].map((item)=>{
+            temparr=[...temparr,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
+          })
+          console.log("53",temparr)
+          setUsecaseData(temparr)
+          setUsecaseFilteredData(result.data[0])
+          setIsLoading(false)
+        }catch(err)
+        {
+          setIsLoading(false)
+        //   const Toast = Swal.mixin({
+        //   toast: true,
+        //   position: "center",
+        //   showConfirmButton: false,
+        //   timer: 3000,
+        //   timerProgressBar: true,
+        //   didOpen: (toast) => {
+        //     toast.onmouseenter = Swal.stopTimer;
+        //     toast.onmouseleave = Swal.resumeTimer;
+        //   }
+        // });
+        // Toast.fire({
+        //   icon: "error",
+        //   title: "Erro,Try Again"
+        // })
+        }
+  
+      }
+  useEffect(()=>{
+        getDataOnLoad()
+      },[])
 
   const loadImages = (image) => {
     image.src = image.dataset.src;
   };
+  const btnpressprev = () => {
+    console.log("81",inputElement.current)
+    
+    let width = inputElement.current.clientWidth;
+    inputElement.current.scrollLeft = inputElement.current.scrollLeft - width;
+    console.log(width)
+  }
+  const btnpressnext = () => {
+    console.log("93",inputElement.current)
+    
+    let width = inputElement.current.clientWidth;
+    inputElement.current.scrollLeft = inputElement.current.scrollLeft + width;
+    console.log(width)
+  }
 
   return (
     <div className='home-wrapper'>
@@ -93,74 +157,47 @@ const Home = () => {
         <img src={""} data-src={Frame1} style={{width:"100%",height:"100%",objectFit:"cover"}} />
       </div>
       <div className='home-wrapper-3'>
-        {/* <img src={Frame2} style={{width:"80%",height:"100%",objectFit:"cover"}} /> */}
-        <img src={Frametitle} />
-        <div className='home-wrapper-3-images'>
-          <div className='card'>
-            <img src={""} data-src={GettyImages1} style={{ padding:"5px",borderRadius:"3%"}}/>
-            <div className='image-text'>
-            Use Case Name 1
-            </div>
-            <div className='image-1-content'>
-              <div className='title'>
-                Use Case Name 1
-              </div>
-              <div className='content'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vestibulum ullamcorper nisi, ut gravida felis eleifend.
-              </div>
-            </div>
+        {isLoading &&  <HomeLoader/>}
+        <div className='frametitle'>Explore Recent Use Cases</div>
+          <FaAngleLeft className="icon-home-pre" onClick={btnpressprev}/>
+          <div className='home-wrapper-3-images' ref={inputElement}>
+            { 
+                
+                
+                usecaseData?.map((item) => 
+                  {
+                    return(
+                      <div className='card' key={item.id}>
+                        <img src={`https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/upload/${item.link}`} style={{width:"100%",height:"150px",padding:"5px",objectFit:"cover"}}/>
+                        <p className="image-text">{item.title}</p>
+                        <p className="image-content">{item.data}
+                        </p>
+                        {/* <div className='image-text'>
+                        {item.title}
+                        </div>
+                        <div className='image-1-content'>
+                          <div className='title'>
+                          {item.title}
+                          </div>
+                          <div className='content'>
+                          {item.data}
+                          </div>
+                        </div> */}
+                      </div>
+                    )
+                  }
+                  
+                )
+                
+            }
+            
           </div>
-          <div className='card'>
-            <img src={""} data-src={GettyImages2} style={{padding:"5px",borderRadius:"3%"}}/>
-            <div className='image-text'>
-            Use Case Name 2
-            </div>
-            <div className='image-1-content'>
-              <div className='title'>
-                Use Case Name 2
-              </div>
-              <div className='content'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vestibulum ullamcorper nisi, ut gravida felis eleifend.
-              </div>
-            </div>
-          </div>
-          <div className='card'>
-            <img src={""} data-src={GettyImages3} style={{padding:"5px",borderRadius:"3%"}}/>
-            <div className='image-text'>
-            Use Case Name 3
-            </div>
-            <div className='image-1-content'>
-              <div className='title'>
-                Use Case Name 3
-              </div>
-              <div className='content'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vestibulum ullamcorper nisi, ut gravida felis eleifend.
-              </div>
-            </div>
-          </div>
-          <div className='card'>
-            <img src={""} data-src={GettyImages4} style={{padding:"5px",borderRadius:"3%"}}/>
-            <div className='image-text'>
-            Use Case Name 4
-            </div>
-            <div className='image-1-content'>
-              <div className='title'>
-                Use Case Name 4
-              </div>
-              <div className='content'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vestibulum ullamcorper nisi, ut gravida felis eleifend.
-              </div>
-            </div>
-          </div>
-          {/* <img src={GettyImages2} style={{padding:"5px",borderRadius:"3%"}}/>
-          <img src={GettyImages3} style={{padding:"5px",borderRadius:"3%"}}/>
-          <img src={GettyImages4} style={{padding:"5px",borderRadius:"3%"}}/> */}
-        </div>
+          <FaAngleRight className="icon-home-next" onClick={btnpressnext}/>
       </div>
       <div className='home-wrapper-4'>
         {/* <img src={clients} style={{width:"100%",height:"100%",objectFit:"cover"}} /> */}
         <div className='clienttitle'>
-          <img src={clienttitle} style={{marginTop:"10px"}}/>
+          our clients
         </div>
         <div className='clientlogo'>
           <div className='clientlogoslide'>
