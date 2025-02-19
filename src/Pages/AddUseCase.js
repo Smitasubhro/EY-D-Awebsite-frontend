@@ -173,12 +173,23 @@ const AddUseCase = () => {
                 <p style={{color:"white",fontSize:"12px",  whiteSpace: "nowrap"}}>Add Use Case</p>
             </div>
             <img src={Addusecasebanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
-            <p style={{color:"#FFFFFF",whiteSpace: "nowrap",position:"absolute",top:"30%",left:"38%",
-            fontFamily:"EYInterstate",
-            fontSize:"35px",
-            fontWeight:"700",
-            lineHeight: "48.01px"
-            }}>Add New Use Case</p>
+            <div 
+                style={{
+                position: "absolute",
+                left: "50%",
+                top:"50%",
+                transform: "translate(-50%,-50%)",
+                color:"#FFFFFF",
+                whiteSpace: "nowrap",
+                fontFamily:"EYInterstate",
+                fontSize:"35px",
+                fontWeight:"700",
+                lineHeight: "48.01px",
+                }}
+            >
+          
+                Add New Use Case
+            </div>
         </div>
         <div className='addusecase-wrapper-2'>
             <div className='addusecase-form'>

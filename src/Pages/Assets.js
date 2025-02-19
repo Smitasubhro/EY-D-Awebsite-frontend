@@ -336,12 +336,23 @@ const Assets = () => {
     <div className='asset-wrapper'>
       <div className='asset-wrapper-1'>
         <img src={Assetbanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
-        <p style={{color:"#FFFFFF",whiteSpace: "nowrap",position:"absolute",top:"10%",left:"45%",
+        <div 
+          style={{
+          position: "absolute",
+          left: "50%",
+          top:"50%",
+          transform: "translate(-50%,-50%)",
+          color:"#FFFFFF",
+          whiteSpace: "nowrap",
           fontFamily:"EYInterstate",
           fontSize:"35px",
           fontWeight:"700",
-          lineHeight: "48.01px"
-        }}>Assets</p>
+          lineHeight: "48.01px",
+          }}
+        >
+          
+          Assets
+        </div>
         <div className='addasset-btn'>
           <Link style={{textDecoration:"none"}} to={`/addasset`}>
             <button>
