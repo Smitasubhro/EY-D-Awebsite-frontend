@@ -1,6 +1,6 @@
 import React,{useState,useRef,useEffect} from 'react'
 import {Link} from "react-router-dom";
-import Assetbanner from "../Asset/Assetbanner.svg"
+import Assetbanner from "../Asset/Assetbanner.png"
 import usecaseimg1 from "../Asset/usecaseimg1.svg"
 import usecaseimg2 from "../Asset/usecaseimg2.svg"
 import usecaseimg3 from "../Asset/usecaseimg3.svg"
@@ -56,7 +56,7 @@ const Assets = () => {
         }
       );
       const result = await response.json()
-      console.log("Data on Load ",result.data[0])
+      //console.log("Data on Load ",result.data[0])
       let temparr=[]
       result.data[0].map((item)=>{
         temparr=[...temparr,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
@@ -238,7 +238,7 @@ const Assets = () => {
           console.log("searchtext there")
           let temparrfilter=[]
           let tempArr=assetFilteredData.filter((item)=>{
-            return item.Title.includes(searchText) 
+            return item.Title.toLowerCase().includes(searchText.toLowerCase()) 
           })
           // tempArr.map((item)=>{
           //   temparrfilter=[...temparrfilter,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
@@ -247,7 +247,7 @@ const Assets = () => {
             {
               console.log("221",selectedClient,selectedTech)
               let tempArrSearch=tempArr.filter((item)=>{
-                return (item.Client_Name===selectedClient && item.Technology_Used===selectedTech)
+                return (item.Sub_Pillar===selectedClient && item.Industry===selectedTech)
               })
               tempArrSearch.map((item)=>{
                 temparrfilter=[...temparrfilter,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
@@ -259,7 +259,7 @@ const Assets = () => {
                 {
                   console.log("232",selectedClient)
                   let tempArrSearch=tempArr.filter((item)=>{
-                    return item.Client_Name===selectedClient 
+                    return item.Sub_Pillar===selectedClient 
                   })
                   tempArrSearch.map((item)=>{
                     temparrfilter=[...temparrfilter,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
@@ -270,7 +270,7 @@ const Assets = () => {
               {
                 console.log("242",selectedTech)
                 let tempArrSearch=tempArr.filter((item)=>{
-                  return  item.Technology_Used===selectedTech
+                  return  item.Industry===selectedTech
                 })
                 tempArrSearch.map((item)=>{
                   temparrfilter=[...temparrfilter,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
@@ -293,7 +293,7 @@ const Assets = () => {
           if(selectedClient && selectedTech)
           {
             let tempArr=assetFilteredData.filter((item)=>{
-              return (item.Client_Name===selectedClient && item.Technology_Used===selectedTech)
+              return (item.Sub_Pillar===selectedClient && item.Industry===selectedTech)
             })
             tempArr.map((item)=>{
               temparrfilter=[...temparrfilter,{id:item.ID,title:item.Title,data:item.Problem_Statement?.slice(0,200),link:item.Image_Link}]
@@ -303,7 +303,7 @@ const Assets = () => {
             if(!selectedTech && selectedClient)
               {
                 let tempArr=assetFilteredData.filter((item)=>{
-                  return item.Client_Name===selectedClient
+                  return item.Sub_Pillar===selectedClient
                 })
                 
                 tempArr.map((item)=>{
@@ -314,7 +314,7 @@ const Assets = () => {
               if(selectedTech && !selectedClient)
               {
                 let tempArr=assetFilteredData.filter((item)=>{
-                  return item.Technology_Used===selectedTech
+                  return item.Industry===selectedTech
                 })
                 
                 tempArr.map((item)=>{
@@ -325,12 +325,23 @@ const Assets = () => {
           }
           setAssetData(temparrfilter)
         }
+        setIsAll(true)
+        setIsDF(false)
+        setIsDE(false)
+        setIsBI(false)
+        setIsAI(false)
       }
 
   return (
     <div className='asset-wrapper'>
       <div className='asset-wrapper-1'>
         <img src={Assetbanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+        <p style={{color:"#FFFFFF",whiteSpace: "nowrap",position:"absolute",top:"10%",left:"45%",
+          fontFamily:"EYInterstate",
+          fontSize:"35px",
+          fontWeight:"700",
+          lineHeight: "48.01px"
+        }}>Assets</p>
         <div className='addasset-btn'>
           <Link style={{textDecoration:"none"}} to={`/addasset`}>
             <button>
@@ -352,20 +363,44 @@ const Assets = () => {
             </div>
             <div className="search-select-box-1">
               <select value={selectedTech} onChange={(e)=>setSelectedTech(e.target.value)}>
-                <option value="" hidden>Please Select Technology</option>
-                <option value="powerapps" >Power Apps</option>
-                <option value="powerbi">Power BI</option>
-                <option value="react">React</option>
-                <option value="java">JAVA</option>
+                <option value="" hidden>Please Select Industry</option>
+                <option value="AM" >Manufacturing</option>
+                <option value="CM">Consumer</option>
+                <option value="ER">Energy</option>
+                <option value="FS">Finance</option>
+                <option value="GI">Infrastructure</option>
+                <option value="HC">Healthcare</option>
+                <option value="PE">Private</option>
+                <option value="TM">Technology</option>
               </select>
             </div>
             <div className="search-select-box-2">
               <select value={selectedClient} onChange={(e)=>setSelectedClient(e.target.value)}>
-                <option value="" hidden>Please Select Client</option>
-                <option value="EY">EY</option>
-                <option value="Infosys">Infosys</option>
-                <option value="TCS">TCS</option>
-                <option value="TSL">TSL</option>
+                <option value="" hidden>Please Select Sub-Pillar</option>
+                <option value="Azure">Azure</option>
+                <option value="AWS">AWS</option>
+                <option value="GCP">GCP</option>
+                <option value="Snowflake">Snowflake</option>
+                <option value="DBT">DBT</option>
+                <option value="Fivetran">Fivetran</option>
+                <option value="Palantir Foundry">Palantir Foundry</option>
+                <option value="Databricks">Databricks</option>
+                <option value="Big Data & Hadoop">Big Data & Hadoop</option>
+                <option value="MS Fabric">MS Fabric</option>
+                <option value="Data Strategy">Data Strategy</option>
+                <option value="MDM">MDM</option>
+                <option value="Data Modelling">Data Modelling</option>
+                <option value="DQ">DQ</option>
+                <option value="ETL / DI">ETL / DI</option>
+                <option value="Data Governance">Data Governance</option>
+                <option value="Data Testing">Data Testing</option>
+                <option value="Data Analysis">Data Analysis</option>
+                <option value="Data Visualization">Data Visualization</option>
+                <option value="Power Platform">Power Platform</option>
+                <option value="AI4BI">AI4BI</option>
+                <option value="AI/ ML Engineering">AI/ ML Engineering</option>
+                <option value="Gen-AI">Gen-AI</option>
+                <option value="Python Full Stack">Python Full Stack</option>
               </select>
             </div>
             <div id="filter-btn">

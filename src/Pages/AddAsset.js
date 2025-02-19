@@ -1,5 +1,5 @@
 import React,{useState,useRef} from 'react'
-import Addassetbanner from "../Asset/Addassetbanner.jpg"
+import Addassetbanner from "../Asset/Assetbanner.png"
 import { CiHome } from "react-icons/ci";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaSpinner } from "react-icons/fa";
@@ -174,6 +174,12 @@ const onSubmitHandler = async(e) => {
                 <p style={{color:"white",fontSize:"12px",  whiteSpace: "nowrap"}}>Add Asset</p>
             </div>
             <img src={Addassetbanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+            <p style={{color:"#FFFFFF",whiteSpace: "nowrap",position:"absolute",top:"30%",left:"38%",
+            fontFamily:"EYInterstate",
+            fontSize:"35px",
+            fontWeight:"700",
+            lineHeight: "48.01px"
+          }}>Add New Asset</p>
           </div>
           <div className='addasset-wrapper-2'>
             <div className='addasset-form'>
@@ -220,8 +226,14 @@ const onSubmitHandler = async(e) => {
                   <label for='industry'>Industry *</label>
                   <select id='industry' name='industry' required onChange={(e)=>handleFormdataChange(e)}>
                       <option value="" hidden>Please Select an item</option>
-                      <option value="telecom" >Telecom</option>
-                      <option value="transport">Transport</option>
+                      <option value="AM" >Manufacturing</option>
+                      <option value="CM">Consumer</option>
+                      <option value="ER">Energy</option>
+                      <option value="FS">Finance</option>
+                      <option value="GI">Infrastructure</option>
+                      <option value="HC">Healthcare</option>
+                      <option value="PE">Private</option>
+                      <option value="TM">Technology</option>
                   </select>
                 </div>
                 <div className="form-field-select">

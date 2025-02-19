@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {useParams} from "react-router-dom";
 import {Link} from "react-router-dom";
-import usecasedetailbanner from "../Asset/usecasedetailbanner.svg"
+import Addusecasebanner from "../Asset/Addusecasebanner.png"
 import bannerdtlimg1 from "../Asset/bannerdtlimg1.svg"
 import { CiHome } from "react-icons/ci";
 import { IoIosArrowForward } from "react-icons/io";
@@ -22,9 +22,9 @@ const UseCaseDetail = () => {
           }
         );
         const result = await response.json()
-        console.log("Data on Load ",result.data[0])
+        
       
-        let temparr=result.data[0].filter((item)=>{
+        let temparr=result.data[0]?.filter((item)=>{
           return item.ID.toString()===caseid
         })
         console.log("26",temparr)
@@ -50,7 +50,14 @@ const UseCaseDetail = () => {
                 <IoIosArrowForward style={{color:"white"}}/>
                 <p style={{color:"white",fontSize:"12px",  whiteSpace: "nowrap"}}>{casetitle}</p>
             </div>
-            <img src={usecasedetailbanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+            <img src={Addusecasebanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+            <p style={{color:"#FFFFFF",whiteSpace: "nowrap",position:"absolute",top:"30%",left:"40%",
+            fontFamily:"EYInterstate",
+            fontSize:"35px",
+            fontWeight:"700",
+            lineHeight: "48.01px",
+            alignItems:"center"
+            }}>{casetitle}</p>
         </div>
         <div className='usecasedetail-wrapper-2'>
             {isLoading ? <Loader/> :

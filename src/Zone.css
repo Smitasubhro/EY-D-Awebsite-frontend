@@ -7,14 +7,14 @@
     overflow-y: scroll;
     
 }
-/* .zone-wrapper-1{
-    background-image:url('./Asset/zonebanner1bgimage.jpg');
+ .zone-wrapper-1{
+    /* background-image:url('./Asset/zonebanner1bgimage.jpg'); */
     width:100vw;
-    height:100%;
+    height:500px;
     position: relative;
+    background: rgb(28 28 36 / 90%);
     
-    
-} */
+} 
  .overlay{
     position: absolute;
     top:0;
@@ -243,7 +243,7 @@ nav a:nth-child(4):hover~span{
 .zone-wrapper-2{
     
     width:100vw;
-    height:30vh;
+    height:0%;
     /* background-color: aqua; */
     position: relative;
     /* background-image: url(./Asset/Zonebanner2.svg);
@@ -254,7 +254,18 @@ nav a:nth-child(4):hover~span{
     width:100vw;
     height:200px;
     background-color: #A09001;
-    /* position: absolute; */
+    position: relative;
+}
+.zonebanner2-nav-title
+{
+    position: absolute;
+    top:4%;
+    left:10%;
+    color:white;
+    font-family:EYInterstate;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 25.2px;
 }
 .zonebanner1-nav-title{
     position: absolute;
@@ -272,8 +283,9 @@ nav a:nth-child(4):hover~span{
     border-radius: 6px;
     position:absolute;
     /* width:800px; */
-    
-    top:10%;
+    width: 1030px;
+    height: 50px;
+    top:15%;
     left:10%;
     display:flex;
     justify-content: center;
@@ -292,14 +304,14 @@ nav a:nth-child(4):hover~span{
     } */
     .zone2-navbar nav{
         position: relative;
-        width: 700px;
-        height: 50px;
+        width: 1000px;
         border-radius: 8px;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
-        background-color: #1A1A24;
+        background-color:#1A1A24;
         overflow: hidden;
+        margin:2px;
     }
     .zone2-navbar nav button{
         font-family:EYInterstate;
@@ -315,7 +327,7 @@ nav a:nth-child(4):hover~span{
         font-family:EYInterstate;
         font-size: 1em;
         font-weight: 500;
-        width:fit-content;
+        width:15%;
         height: 60%;
         background: #FFE600;
         cursor: pointer;
@@ -381,9 +393,25 @@ nav a:nth-child(4):hover~span{
     }
 .zonebanner2{
     width:100vw;
-    height:330px;
+    height:250px;
     background-color: black;
-    /* position: absolute; */
+    position: relative;
+}
+.zonebanner1-usecases{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: -10px; */
+    /* background-color: blue; */
+    overflow: hidden;
+    scroll-behavior: smooth;
+    gap:10px;
+    /* max-height: 200px; */
+    max-width: 82%;
+    position:absolute;
+    top:33%;
+    left:10%;
 }
 .zonebanner2-usecases{
     display: flex;
@@ -398,8 +426,22 @@ nav a:nth-child(4):hover~span{
     /* max-height: 200px; */
     max-width: 82%;
     position:absolute;
-    top:90%;
+    top:-20%;
     left:10%;
+}
+.zonebanner1-card{
+    /* position: relative; */
+    /* min-height: 200px; */
+  /* background-color: red; */
+  flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background-color: white;
+    min-width:250px;
+    max-width: 250px;
+    height:300px;
+    border-radius:6px;
 }
 .zonebanner2-card{
     /* position: relative; */
@@ -412,7 +454,7 @@ nav a:nth-child(4):hover~span{
     background-color: white;
     min-width:250px;
     max-width: 250px;
-    height:300px;
+    height:290px;
     border-radius:6px;
 }
 .zone-image-text{

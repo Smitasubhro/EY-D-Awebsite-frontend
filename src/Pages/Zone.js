@@ -286,26 +286,28 @@ const Zone = () => {
      {isLoading?<Loader/>:
       <>
       <div className='zone-wrapper-1'
-        style={{
-          backgroundImage: `url(${zonebanner1bgimage})`,
-          height:"70vh",
-          width:"100%",
-          // height:"800px",
-          position: "relative",
-          overflow: "hidden",
-          backgroundPosition:"center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
+        // style={{
+        //   backgroundImage: `url(${zonebanner1bgimage})`,
+        //   height:"700px",
+        //   width:"100%",
+        //   position: "relative",
+        //   overflow: "hidden",
+        //   backgroundPosition:"center",
+        //   backgroundSize: "cover",
+        //   backgroundRepeat: "no-repeat",
          
-        }}
+        // }}
       >
-        <div className='overlay'>
+        {/* <div className='overlay'>
           
-        </div>
+        </div> */}
         {/* <img src={zone1image} style={{
             width:"300px",height:"200px",objectFit:"cover",position:"absolute",top:"30%",left:"10%",
             backgroundColor:"black"
             }}  /> */}
+        <span className='zonebanner2-nav-title'>
+            INDUSTRIES
+        </span>
         <div className='zone2-navbar'>
           <nav>
              
@@ -333,9 +335,30 @@ const Zone = () => {
               <button id='TM' className={isTM?'activebtn':''} onClick={(event)=>handleBtnClickInd(event)}>
               Technology
               </button>
+              
           </nav>
         </div>
-        <div className="zone-slider">
+        <div className='zonebanner1-usecases'>
+          { 
+            usecaseFilteredData?.slice(0,4)?.map((item) => 
+              {
+                return(
+                  <div className='zonebanner1-card' key={item.id}>
+                    <img src={`https://dawebsitebackend-cbbsfecegrejhvbx.eastus-01.azurewebsites.net/upload/${item.link}`} style={{width:"100%",height:"150px",padding:"5px",objectFit:"cover"}}/>
+                    <p className="zone-image-text">{item.title}</p>
+                    <p className="zone-image-content">{item.data?.slice(0,120)}</p>
+                    <Link style={{textDecoration:"none"}} to={`/usecases/${item.id}/${item.title}`}>
+                      <p className='usecase-tile-footer'>Read More</p>
+                    </Link>
+                  </div>
+                )
+              }
+            )
+          }
+
+        </div>
+        
+        {/* <div className="zone-slider">
           <span className='zoneslider-title'>
             Industries
           </span>
@@ -366,24 +389,10 @@ const Zone = () => {
                 )
                 
             }
-            {/* <div className='slider-box'>
-              <img src={GettyImages4} style={{width:"40%",height:"100%",padding:"5px",objectFit:"cover"}}/>
-              <div className='slider-data'>
-                <div className="slider-content">
-                  As visualization consultants, accurately estimating the time and cost for report development is challenging but crucial for business processes.
-                  
-                </div>
-                <div style={{display:"flex"}}>
-                  <p>Read More</p>
-                  <FaArrowRight style={{color:"#747480",marginTop:"5px",cursor:"pointer"}}/>
-                </div>
-                
-                
-              </div>
-            </div> */}
+           
             
           </div>
-        </div>
+        </div> */}
       </div>
       <div className='zone-wrapper-2'>
         <div className='zonebanner1' >

@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {useParams} from "react-router-dom";
 import {Link} from "react-router-dom";
 import usecasedetailbanner from "../Asset/usecasedetailbanner.svg"
+import Addusecasebanner from "../Asset/Addusecasebanner.png"
 import bannerdtlimg1 from "../Asset/bannerdtlimg1.svg"
 import { CiHome } from "react-icons/ci";
 import { IoIosArrowForward } from "react-icons/io";
@@ -51,7 +52,14 @@ const AssetDetail = () => {
               <IoIosArrowForward style={{color:"white"}}/>
               <p style={{color:"white",fontSize:"12px",  whiteSpace: "nowrap"}}>{assettitle}</p>
           </div>
-          <img src={usecasedetailbanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+          <img src={Addusecasebanner} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+          <p style={{color:"#FFFFFF",whiteSpace: "nowrap",position:"absolute",top:"30%",left:"40%",
+            fontFamily:"EYInterstate",
+            fontSize:"35px",
+            fontWeight:"700",
+            lineHeight: "48.01px",
+            alignItems:"center"
+            }}>{assettitle}</p>
         </div>
         <div className='assetdetail-wrapper-2'>
           {isLoading ? <Loader/> :
